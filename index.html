@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador Global de Vuelos - Tarifas en Tiempo Real</title>
-    <meta name="description" content="Compara precios de más de 500 aerolíneas y encuentra la mejor tarifa disponible. Sin comisiones ocultas.">
+    <title>Ofertas de Vuelos Desde $89.999 COP - Descuentos Limitados</title>
+    <meta name="description" content="Aprovecha precios desde $89.999 COP en vuelos nacionales e internacionales. Ofertas por tiempo limitado.">
     
     <style>
-        /* --- RESET Y VARIABLES --- */
+        /* --- MISMOS ESTILOS QUE EL DISEÑO ANTERIOR --- */
         :root {
-            --primary-color: #0f172a; /* Azul oscuro profesional */
-            --accent-color: #f97316; /* Naranja de alta conversión */
+            --primary-color: #0f172a; 
+            --accent-color: #f97316; 
             --accent-hover: #ea580c;
             --text-dark: #334155;
             --text-light: #94a3b8;
@@ -19,11 +19,7 @@
             --max-width: 1200px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -38,7 +34,7 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* --- HEADER --- */
+        /* HEADER */
         .navbar {
             background-color: var(--white);
             border-bottom: 1px solid #e2e8f0;
@@ -54,36 +50,21 @@
             margin: 0 auto;
         }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary-color); letter-spacing: -0.5px; }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
+        .nav-links a { font-size: 0.9rem; color: var(--text-dark); margin-left: 2rem; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent-color); }
 
-        /* --- HERO SECTION (Área Principal) --- */
+        /* HERO SECTION */
         .hero {
             background-color: var(--primary-color);
+            /* Imagen sugerente de viaje/destino */
             background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            height: 75vh; /* Ocupa buena parte de la pantalla pero incita al scroll */
+            height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -91,13 +72,10 @@
             padding: 2rem;
         }
 
-        .hero-content {
-            max-width: 800px;
-            color: var(--white);
-        }
+        .hero-content { max-width: 800px; color: var(--white); }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem); /* Tipografía responsiva */
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -105,15 +83,21 @@
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: #cbd5e1;
             margin-bottom: 2.5rem;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- EL BOTÓN (CTA) --- */
+        /* Highlight price text */
+        .price-highlight {
+            color: #fbbf24; /* Color dorado/amarillo para resaltar el precio */
+            font-weight: 700;
+        }
+
+        /* CTA BUTTON */
         .cta-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -133,10 +117,6 @@
             box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.5);
         }
 
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
         .trust-text {
             display: block;
             margin-top: 1rem;
@@ -144,79 +124,21 @@
             color: #94a3b8;
         }
 
-        /* --- SECCIÓN DE VALOR (Requisito Google Ads) --- */
-        .features {
-            padding: 5rem 0;
-            background-color: var(--white);
-        }
+        /* FEATURES */
+        .features { padding: 5rem 0; background-color: var(--white); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature-card { padding: 2rem; border-radius: 12px; background-color: var(--bg-light); border: 1px solid #e2e8f0; }
+        .feature-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            padding: 2rem;
-            border-radius: 12px;
-            background-color: var(--bg-light);
-            border: 1px solid #e2e8f0;
-        }
-
-        .feature-title {
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- FOOTER (Obligatorio) --- */
-        footer {
-            margin-top: auto;
-            background-color: #1e293b;
-            color: #94a3b8;
-            padding: 3rem 0;
-            font-size: 0.9rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .footer-col a {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
+        /* FOOTER */
+        footer { margin-top: auto; background-color: #1e293b; color: #94a3b8; padding: 3rem 0; font-size: 0.9rem; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; border-bottom: 1px solid #334155; padding-bottom: 2rem; margin-bottom: 2rem; }
+        .footer-col h4 { color: var(--white); margin-bottom: 1rem; }
+        .footer-col a { display: block; margin-bottom: 0.5rem; }
         .footer-col a:hover { text-decoration: underline; }
+        .disclaimer { font-size: 0.8rem; text-align: center; color: #64748b; max-width: 800px; margin: 0 auto; }
 
-        .disclaimer {
-            font-size: 0.8rem;
-            text-align: center;
-            color: #64748b;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* En móvil simplificamos */
-            .hero { height: auto; padding: 6rem 1rem; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero { height: auto; padding: 6rem 1rem; } }
     </style>
 </head>
 <body>
@@ -225,8 +147,8 @@
         <div class="container nav-content">
             <div class="logo">VuelaBarato<span style="color:var(--accent-color)">.com</span></div>
             <nav class="nav-links">
-                <a href="#">Cómo funciona</a>
-                <a href="#">Aerolíneas</a>
+                <a href="#">Ofertas Flash</a>
+                <a href="#">Destinos</a>
                 <a href="#">Contacto</a>
             </nav>
         </div>
@@ -235,14 +157,15 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>Tu próximo destino al precio más bajo del mercado</h1>
-                <p>Analizamos miles de rutas en tiempo real para garantizarte el precio mínimo. Reserva directa con aerolíneas certificadas.</p>
+                <h1>Gran Venta de Tiquetes Aéreos: Descuentos por Tiempo Limitado</h1>
                 
-                <a href="https://tu-link-de-afiliado-o-buscador.com" class="cta-button">
-                    BUSCAR VUELOS AHORA
+                <p>Viaja por Colombia y el mundo con nuestras tarifas reducidas. Encuentra vuelos hoy mismo desde <span class="price-highlight">$89.999 COP*</span>.</p>
+                
+                <a href="https://tu-link-de-afiliado.com" class="cta-button">
+                    VER OFERTAS DESDE $89.999 ➔
                 </a>
                 
-                <span class="trust-text">Sitio verificado &bull; Conexión Segura SSL</span>
+                <span class="trust-text">Sujeto a disponibilidad &bull; Cancelación Flexible en aerolíneas seleccionadas</span>
             </div>
         </section>
 
@@ -251,26 +174,26 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-title">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                            Búsqueda Instantánea
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Tarifas desde $89.999
                         </div>
-                        <p>Nuestro algoritmo procesa más de 500 aerolíneas en segundos para mostrarte todas las opciones disponibles sin esperas.</p>
+                        <p>Rastreamos las bajadas de precio de último minuto. Accede a las tarifas "Low Cost" antes de que se agoten.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Ofertas Flash
+                        </div>
+                        <p>Estas promociones cambian cada 24 horas. Nuestro sistema actualiza la disponibilidad en tiempo real.</p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-title">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                            Reserva Segura
+                            Compra 100% Garantizada
                         </div>
-                        <p>Te redirigimos únicamente a proveedores oficiales y sitios verificados. Tus datos viajan siempre encriptados.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-title">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                            Transparencia Total
-                        </div>
-                        <p>El precio que ves es el precio final. Sin tasas ocultas ni sorpresas al momento de pagar.</p>
+                        <p>Reserva directamente con las aerolíneas líderes del mercado. Sin intermediarios riesgosos ni letras pequeñas.</p>
                     </div>
                 </div>
             </div>
@@ -282,9 +205,8 @@
             <div class="footer-content">
                 <div class="footer-col">
                     <h4>Empresa</h4>
-                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Quiénes Somos</a>
                     <a href="#">Contacto</a>
-                    <a href="#">Prensa</a>
                 </div>
                 <div class="footer-col">
                     <h4>Legal</h4>
@@ -293,13 +215,13 @@
                     <a href="#">Política de Cookies</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Dirección</h4>
-                    <p>Calle Ejemplo 123, Oficina 4B<br>Ciudad, País 28000</p>
+                    <h4>Ubicación</h4>
+                    <p>Calle 100 #15-23<br>Bogotá, Colombia</p>
                 </div>
             </div>
             
             <div class="disclaimer">
-                <p><strong>Aviso Importante:</strong> Este sitio web funciona como un motor de búsqueda y comparación de vuelos. No vendemos billetes directamente. Al hacer clic en "Buscar Vuelos", serás redirigido a la página web de nuestros socios comerciales o de la aerolínea correspondiente para finalizar tu reserva.</p>
+                <p><strong>*Aviso Legal sobre Precios:</strong> Las tarifas "desde $89.999 COP" están sujetas a disponibilidad de sillas, fechas de viaje y condiciones de la aerolínea. Los precios pueden variar sin previo aviso. Este sitio actúa como un motor de comparación y búsqueda; la transacción final se realiza en el sitio web del proveedor.</p>
                 <br>
                 <p>&copy; 2024 VuelaBarato. Todos los derechos reservados.</p>
             </div>
