@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Global de Vuelos - Tarifas en Tiempo Real</title>
+    <meta name="description" content="Compara precios de más de 500 aerolíneas y encuentra la mejor tarifa disponible. Sin comisiones ocultas.">
+    
+    <style>
+        /* --- RESET Y VARIABLES --- */
+        :root {
+            --primary-color: #0f172a; /* Azul oscuro profesional */
+            --accent-color: #f97316; /* Naranja de alta conversión */
+            --accent-hover: #ea580c;
+            --text-dark: #334155;
+            --text-light: #94a3b8;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER --- */
+        .navbar {
+            background-color: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* --- HERO SECTION (Área Principal) --- */
+        .hero {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 75vh; /* Ocupa buena parte de la pantalla pero incita al scroll */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Tipografía responsiva */
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- EL BOTÓN (CTA) --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .trust-text {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* --- SECCIÓN DE VALOR (Requisito Google Ads) --- */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: var(--bg-light);
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- FOOTER (Obligatorio) --- */
+        footer {
+            margin-top: auto;
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-col a:hover { text-decoration: underline; }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            text-align: center;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* En móvil simplificamos */
+            .hero { height: auto; padding: 6rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="logo">VuelaBarato<span style="color:var(--accent-color)">.com</span></div>
+            <nav class="nav-links">
+                <a href="#">Cómo funciona</a>
+                <a href="#">Aerolíneas</a>
+                <a href="#">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Tu próximo destino al precio más bajo del mercado</h1>
+                <p>Analizamos miles de rutas en tiempo real para garantizarte el precio mínimo. Reserva directa con aerolíneas certificadas.</p>
+                
+                <a href="https://tu-link-de-afiliado-o-buscador.com" class="cta-button">
+                    BUSCAR VUELOS AHORA
+                </a>
+                
+                <span class="trust-text">Sitio verificado &bull; Conexión Segura SSL</span>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Búsqueda Instantánea
+                        </div>
+                        <p>Nuestro algoritmo procesa más de 500 aerolíneas en segundos para mostrarte todas las opciones disponibles sin esperas.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            Reserva Segura
+                        </div>
+                        <p>Te redirigimos únicamente a proveedores oficiales y sitios verificados. Tus datos viajan siempre encriptados.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Transparencia Total
+                        </div>
+                        <p>El precio que ves es el precio final. Sin tasas ocultas ni sorpresas al momento de pagar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <a href="#">Sobre Nosotros</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Prensa</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos y Condiciones</a>
+                    <a href="#">Política de Cookies</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Dirección</h4>
+                    <p>Calle Ejemplo 123, Oficina 4B<br>Ciudad, País 28000</p>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Aviso Importante:</strong> Este sitio web funciona como un motor de búsqueda y comparación de vuelos. No vendemos billetes directamente. Al hacer clic en "Buscar Vuelos", serás redirigido a la página web de nuestros socios comerciales o de la aerolínea correspondiente para finalizar tu reserva.</p>
+                <br>
+                <p>&copy; 2024 VuelaBarato. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
