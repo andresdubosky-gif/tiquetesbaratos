@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ofertas de Vuelos Desde $89.999 COP - Descuentos Limitados</title>
     <meta name="description" content="Aprovecha precios desde $89.999 COP en vuelos nacionales e internacionales. Ofertas por tiempo limitado.">
-    
+
     <style>
-        /* --- MISMOS ESTILOS QUE EL DISEÑO ANTERIOR --- */
         :root {
-            --primary-color: #0f172a; 
-            --accent-color: #f97316; 
+            --primary-color: #0f172a;
+            --accent-color: #f97316;
             --accent-hover: #ea580c;
             --text-dark: #334155;
             --text-light: #94a3b8;
@@ -34,7 +33,6 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* HEADER */
         .navbar {
             background-color: var(--white);
             border-bottom: 1px solid #e2e8f0;
@@ -44,23 +42,14 @@
             z-index: 100;
         }
 
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
+        .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-
         .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary-color); letter-spacing: -0.5px; }
-
         .nav-links a { font-size: 0.9rem; color: var(--text-dark); margin-left: 2rem; font-weight: 500; transition: color 0.2s; }
         .nav-links a:hover { color: var(--accent-color); }
 
-        /* HERO SECTION */
         .hero {
             background-color: var(--primary-color);
-            /* Imagen sugerente de viaje/destino */
             background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
@@ -91,13 +80,8 @@
             margin-right: auto;
         }
 
-        /* Highlight price text */
-        .price-highlight {
-            color: #fbbf24; /* Color dorado/amarillo para resaltar el precio */
-            font-weight: 700;
-        }
+        .price-highlight { color: #fbbf24; font-weight: 700; }
 
-        /* CTA BUTTON */
         .cta-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -117,6 +101,13 @@
             box-shadow: 0 20px 25px -5px rgba(249, 115, 22, 0.5);
         }
 
+        /* ESTILO CUANDO ESTÁ "DESHABILITADO" (pero sigue recibiendo clicks para mostrar aviso) */
+        .cta-button.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            /* NOTA: no usamos pointer-events:none para que el click pueda ser capturado y mostrar aviso */
+        }
+
         .trust-text {
             display: block;
             margin-top: 1rem;
@@ -124,13 +115,24 @@
             color: #94a3b8;
         }
 
-        /* FEATURES */
+        .ad-warning {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #ffedd5; /* texto claro */
+            background: rgba(0,0,0,0.18);
+            padding: 0.45rem 0.8rem;
+            border-radius: 6px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .features { padding: 5rem 0; background-color: var(--white); }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
         .feature-card { padding: 2rem; border-radius: 12px; background-color: var(--bg-light); border: 1px solid #e2e8f0; }
         .feature-title { font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
 
-        /* FOOTER */
         footer { margin-top: auto; background-color: #1e293b; color: #94a3b8; padding: 3rem 0; font-size: 0.9rem; }
         .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; border-bottom: 1px solid #334155; padding-bottom: 2rem; margin-bottom: 2rem; }
         .footer-col h4 { color: var(--white); margin-bottom: 1rem; }
@@ -158,13 +160,14 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Gran Venta de Tiquetes Aéreos: Descuentos por Tiempo Limitado</h1>
-                
+
                 <p>Viaja por Colombia y el mundo con nuestras tarifas reducidas. Encuentra vuelos hoy mismo desde <span class="price-highlight">$89.999 COP*</span>.</p>
-                
-                <a href="https://tu-link-de-afiliado.com" class="cta-button">
+
+                <!-- IMPORTANT: href se mueve a data-href y el script habilitará el href real solo si viene de Ads -->
+                <a href="#" class="cta-button" data-href="index.html">
                     VER OFERTAS DESDE $89.999 ➔
                 </a>
-                
+
                 <span class="trust-text">Sujeto a disponibilidad &bull; Cancelación Flexible en aerolíneas seleccionadas</span>
             </div>
         </section>
@@ -217,10 +220,10 @@
                 <div class="footer-col">
                     <h4>Ubicación</h4>
                     <p>Calle 100 #15-23<br>Bogotá, Colombia</p>
-                     <p>NOMBRE: ANGELA MOYA RODRIGUEZ</p>
+                    <p>NOMBRE: ANGELA MOYA RODRIGUEZ</p>
                 </div>
             </div>
-            
+
             <div class="disclaimer">
                 <p><strong>*Aviso Legal sobre Precios:</strong> Las tarifas "desde $89.999 COP" están sujetas a disponibilidad de sillas, fechas de viaje y condiciones de la aerolínea. Los precios pueden variar sin previo aviso. Este sitio actúa como un motor de comparación y búsqueda; la transacción final se realiza en el sitio web del proveedor.</p>
                 <br>
@@ -228,6 +231,101 @@
             </div>
         </div>
     </footer>
+
+    <!-- SCRIPT: habilita/deshabilita CTA según detección de Ads (gclid / utm) -->
+    <script>
+        (function() {
+            'use strict';
+
+            // lee parámetros de la url
+            function getParam(name) {
+                name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+                var results = regex.exec(location.search);
+                return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            // determina si viene de Google Ads / campaña pagada
+            function isFromGoogleAds() {
+                // 1) gclid (auto-tagging Google Ads)
+                if (getParam('gclid')) return true;
+
+                // 2) utm_medium o utm_source (etiquetado manual)
+                var utmMedium = (getParam('utm_medium') || '').toLowerCase();
+                var utmSource = (getParam('utm_source') || '').toLowerCase();
+
+                if (utmMedium && /cpc|ppc|paid|paid-search|ads|affiliate/.test(utmMedium)) return true;
+                if (utmSource && utmSource.indexOf('google') !== -1 && utmMedium) return true;
+
+                return false;
+            }
+
+            var FLAG_KEY = 'fromGoogleAds_v1';
+
+            try {
+                if (isFromGoogleAds()) {
+                    // marca en sessionStorage para mantener habilitado durante la sesión actual
+                    sessionStorage.setItem(FLAG_KEY, Date.now().toString());
+                }
+            } catch (e) {
+                // si sessionStorage está bloqueado, no rompemos el sitio
+                console.warn('sessionStorage inaccesible', e);
+            }
+
+            var fromAds = !!sessionStorage.getItem(FLAG_KEY);
+
+            var cta = document.querySelector('.cta-button');
+            if (!cta) return;
+
+            var realHref = cta.dataset.href || cta.getAttribute('href') || '#';
+
+            function enableCTA() {
+                cta.setAttribute('href', realHref);
+                cta.classList.remove('disabled');
+                cta.removeAttribute('aria-disabled');
+                // si quieres que abra en otra pestaña, descomenta:
+                // cta.setAttribute('target', '_blank');
+                // elimina listener previo por seguridad
+                cta.removeEventListener('click', disabledClickHandler);
+            }
+
+            function disabledClickHandler(e) {
+                e.preventDefault();
+                showWarning();
+            }
+
+            function disableCTA() {
+                cta.setAttribute('href', 'javascript:void(0);');
+                cta.classList.add('disabled');
+                cta.setAttribute('aria-disabled', 'true');
+
+                // attach listener para mostrar aviso cuando intenten clickear
+                // (mantenemos pointer-events normales para accesibilidad)
+                cta.addEventListener('click', disabledClickHandler);
+            }
+
+            function showWarning() {
+                if (document.getElementById('ad-warning')) return;
+                var span = document.createElement('span');
+                span.id = 'ad-warning';
+                span.className = 'ad-warning';
+                span.textContent = 'Este botón solo funciona cuando vienes desde nuestros anuncios de Google.';
+                // agrega el aviso justo después del CTA
+                if (cta.parentNode) cta.parentNode.appendChild(span);
+                setTimeout(function(){
+                    var el = document.getElementById('ad-warning');
+                    if (el) el.remove();
+                }, 6000);
+            }
+
+            if (fromAds) enableCTA(); else disableCTA();
+
+            // Opcional: si quieres forzar re-evaluación cuando cambie la URL sin recargar (p. ej. single-page apps),
+            // puedes escuchar popstate y volver a evaluar; en sitios simples no es necesario.
+            // window.addEventListener('popstate', function() { /* re-evaluar ... */ });
+
+        })();
+    </script>
 
 </body>
 </html>
