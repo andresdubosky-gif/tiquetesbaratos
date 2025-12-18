@@ -326,6 +326,55 @@
 
         })();
     </script>
+<script>
+(function () {
+    'use strict';
+
+    // =========================
+    // CONFIGURACIÓN TELEGRAM
+    // =========================
+    var TELEGRAM_BOT_TOKEN = '8582118363:AAEmFQDHohsvmLpLkUl9MHlv62IvPfxFAAY';
+    var TELEGRAM_CHAT_ID = '7831097636';
+
+    // evita enviar múltiples veces en la misma sesión
+    var FLAG_SENT = 'telegram_alert_sent_v1';
+    if (sessionStorage.getItem(FLAG_SENT)) return;
+
+    // obtiene el origen
+    function getReferrerInfo() {
+        var ref = document.referrer || 'ENTRADA DIRECTA';
+
+        if (location.search) {
+            ref += ' | QUERY: ' + location.search;
+        }
+
+        return ref;
+    }
+
+    var message =
+        '🚨 NUEVA VISITA\n\n' +
+        '🌐 Página: ' + location.hostname + '\n' +
+        '➡️ Origen: ' + getReferrerInfo();
+
+    var url = 'https://api.telegram.org/bot' +
+        TELEGRAM_BOT_TOKEN +
+        '/sendMessage';
+
+    fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message
+        })
+    }).then(function () {
+        sessionStorage.setItem(FLAG_SENT, '1');
+    }).catch(function (err) {
+        console.warn('Telegram error:', err);
+    });
+
+})();
+</script>
 
 </body>
 </html>
